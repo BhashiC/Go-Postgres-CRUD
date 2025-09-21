@@ -41,4 +41,10 @@ Once the extension is installed:
 #### Git for Source Control
 1. Install Git (https://git-scm.com/downloads/win)
     - `git --version`
-2. 
+2. `git config --global user.name {Your Name}`
+3. `git config --global user.email {your.email@example.com}`
+4. Restart VS code
+5. Create a repository in your git
+6. `git remote add origin {URL of your git repository}`
+7. `git commit -m "first commit"`
+8. `git push -u origin main`
