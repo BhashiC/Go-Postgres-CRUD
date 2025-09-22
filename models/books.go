@@ -1,15 +1,10 @@
 package models
 
-import "gorm.io/gorm"
-
-type Books struct {
-	ID        uint    `gorm:"primary key;autoIncrement" json:"id"`
-	Author    *string `json:"author"`
-	Title     *string `json:"title"`
-	Publisher *string `json:"publisher"`
-}
-
-func MigrateBooks(db *gorm.DB) error {
-	err := db.AutoMigrate(&Books{})
-	return err
+type Book struct {
+	ID          uint      `gorm:"primary key;autoIncrement" json:"id"`
+	Title       string    `gorm:"size:255;not null" json:"title"`
+	AuthorID    uint      `json:"author_id"`
+	Author      Author    `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"author"`
+	PublisherID uint      `json:"publisher_id"`
+	Publisher   Publisher `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"publisher"`
 }
